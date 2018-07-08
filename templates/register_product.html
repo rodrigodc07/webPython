@@ -1,0 +1,20 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+<form action="http://localhost:8080/api/products/" method="post">
+    <div>
+        <label for="name">Nome do Produto:</label>
+        <input type="text" id="name" name="name" />
+    </div>
+    <div>
+        <label for="department">Departmento:</label>
+        <input type="text" id="department" name="department" />
+    </div>
+    <div>
+        <label for="info">Informações:</label>
+        <input type="text" id="info" name="info" />
+    </div>
+
+    <div class="button">
+        <button type="submit">Enviar Cadastro</button>
+    </div>
+</form>
