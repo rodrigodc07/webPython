@@ -2,13 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <form action="/products" method="get">
-  <button type="submit">Cadastrar Produto</button><br>
-  <button type="submit" formaction="/stores">Cadastrar Loja</button><br>
-  <button type="submit" formaction="/sellers">Cadastrar Seller</button>
-</form>
 </head>
 <body>
-
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='home.css')}}">
+<form action="/products" method="get">
+    <div>
+        <button type="submit">Cadastrar Produto</button>
+        <button type="submit" formaction="/product_get">Consultar Produto</button><br>
+    </div>
+    <div>
+        <button type="submit" formaction="/stores">Cadastrar Loja</button>
+        <button type="submit" formaction="/store_get">Consultar Loja</button><br>
+    </div>
+    <div>
+        <button type="submit" formaction="/sellers">Cadastrar Seller</button>
+        <button type="submit" formaction="/seller_get">Consultar Seller</button><br>
+    </div>
+</form>
 </body>
 </html>

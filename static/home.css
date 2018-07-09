@@ -1,0 +1,32 @@
+form {
+    /* Apenas para centralizar o form na página */
+    margin: 0 auto;
+    width: 410px;
+    /* Para ver as bordas do formulário */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+form div + div {
+    margin-top: 1em;
+    margin
+}
+
+label {
+    /*Para ter certeza que todas as labels tem o mesmo tamanho e estão propriamente alinhadas */
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+button {
+    /* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
+    font: 1em sans-serif;
+
+    /* Para dar o mesmo tamanho a todos os campo de texto */
+    width: 200px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}

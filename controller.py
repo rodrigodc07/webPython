@@ -41,5 +41,35 @@ def stores():
         return jsonify(response.json())
 
 
+@app.route('/seller_get', methods=['GET', 'POST'])
+def sellers_get():
+    if request.method == 'GET':
+        return render_template('consulta.html', item='seller')
+    else:
+        dict = request.form
+        response = requests.get(url=URL + 'sellers/' + dict['id'])
+        return jsonify(response.json())
+
+
+@app.route('/product_get', methods=['GET', 'POST'])
+def products_get():
+    if request.method == 'GET':
+        return render_template('consulta.html', item='product')
+    else:
+        dict = request.form
+        response = requests.get(url=URL + 'products/' + dict['id'])
+        return jsonify(response.json())
+
+
+@app.route('/store_get', methods=['GET', 'POST'])
+def stores_get():
+    if request.method == 'GET':
+        return render_template('consulta.html', item='store')
+    else:
+        dict = request.form
+        response = requests.get(url=URL + 'stores/' + dict['id'])
+        return jsonify(response.json())
+
+
 if __name__ == "__main__":
     app.run(debug=True)
