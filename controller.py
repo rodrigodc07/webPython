@@ -1,4 +1,4 @@
-from flask import Flask, jsonify ,render_template
+from flask import Flask, jsonify, render_template, request
 import requests
 
 app = Flask(__name__)
@@ -6,31 +6,40 @@ app = Flask(__name__)
 URL = 'http://localhost:8080/api/'
 
 
-@app.route('/sellers')
+@app.route('/')
+def root():
+    return render_template('homepage.html')
+
+
+@app.route('/sellers', methods=['GET', 'POST'])
 def sellers():
-    seller_URL = URL + 'sellers'
-    r = requests.get(url=seller_URL)
-    # extracting data in json format
-    aux = jsonify(r.json())
-    return render_template('register_seller.html')
+    if request.method == 'GET':
+        return render_template('register_seller.html')
+    else:
+        dict = request.form
+        response = requests.post(url=URL + 'sellers', data=dict)
+        return jsonify(response.json())
 
 
-@app.route('/products')
+@app.route('/products', methods=['GET', 'POST'])
 def products():
-    products_URL = URL + 'products'
-    r = requests.get(url=products_URL)
-    # extracting data in json format
-    aux = jsonify(r.json())
-    return render_template('register_product.html')
+    if request.method == 'GET':
+        return render_template('register_product.html')
+    else:
+        dict = request.form
+        response = requests.post(url=URL + 'products', data=dict)
+        return jsonify(response.json())
 
 
-@app.route('/stores')
+@app.route('/stores', methods=['GET', 'POST'])
 def stores():
-    stores_URL = URL + 'stores'
-    r = requests.get(url=stores_URL)
-    # extracting data in json format
-    aux = jsonify(r.json())
-    return render_template('register_store.html')
+    if request.method == 'GET':
+        return render_template('register_store.html')
+    else:
+        dict = request.form
+        response = requests.post(url=URL+'store', data=dict)
+        return jsonify(response.json())
+
 
 if __name__ == "__main__":
     app.run(debug=True)
