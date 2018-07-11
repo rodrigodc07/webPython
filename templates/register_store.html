@@ -1,9 +1,14 @@
 <!doctype html>
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 <form action="/stores" method="post">
     <div>
         <label for="name">Nome da Loja:</label>
-        <input type="text" id="name" name="name" />
+        <input type="text" id="name" name="name" required/>
     </div>
     <div>
         <label for="sellerName">Nome do Seller:</label>
@@ -28,6 +33,6 @@
 
     <div class="button">
         <button type="submit">Enviar Cadastro</button>
-        <button type="submit" formaction="/">Voltar</button>
+        <button type="button" onclick="goBack()">Voltar</button>
     </div>
 </form>
