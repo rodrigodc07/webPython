@@ -45,3 +45,18 @@ button {
     /* Esta margem extra representa aproximadamente o mesmo espaço que o espaço entre as labels e os seus campos de texto*/
     margin-left: .5em;
 }
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding-left: 1em;
+  text-indent: -.7em;
+  color: red;
+}
+
+li::before {
+  content: "* ";
+}
