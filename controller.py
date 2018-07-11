@@ -19,7 +19,7 @@ def status_code_parser(status_code):
         return 'Parametro Invalido'
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def root():
     return render_template('homepage.html')
 
