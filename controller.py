@@ -19,6 +19,17 @@ def status_code_parser(status_code):
         return 'Parametro Invalido'
 
 
+def list_handler(dict,val):
+    keys = dict.keys()
+    newdict = {val: []}
+    for key in keys:
+        if val in key:
+            newdict[val].append(dict[key])
+        else:
+            newdict[key] = dict[key]
+    return newdict
+
+
 @app.route('/', methods=['GET', 'POST'])
 def root():
     return render_template('homepage.html')
@@ -47,10 +58,12 @@ def products():
 @app.route('/stores', methods=['GET', 'POST'])
 def stores():
     if request.method == 'GET':
-        return render_template('register_store.html')
+        products_list = requests.get(url=URL + 'products').json()
+        sellers_list = requests.get(url=URL + 'sellers').json()
+        return render_template('register_store.html', products=products_list, sellers=sellers_list)
     else:
-        dict = request.form
-        response = requests.post(url=URL + 'store', data=dict)
+        dict = list_handler(request.form,'stock')
+        response = requests.post(url=URL + 'stores', data=dict)
         return jsonify(response.json())
 
 

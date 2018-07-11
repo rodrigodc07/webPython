@@ -19,7 +19,7 @@ label {
     text-align: right;
 }
 
-input, textarea {
+input[type="text"], textarea ,select{
     /* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
     font: 1em sans-serif;
 
@@ -32,7 +32,7 @@ input, textarea {
     border: 1px solid #999;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     /* Dar um pouco de destaque nos elementos ativos */
     border-color: #000;
 }
@@ -44,11 +44,6 @@ input:focus, textarea:focus {
 button {
     /* Esta margem extra representa aproximadamente o mesmo espaço que o espaço entre as labels e os seus campos de texto*/
     margin-left: .5em;
-}
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 li {

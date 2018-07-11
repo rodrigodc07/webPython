@@ -7,15 +7,23 @@
     </div>
     <div>
         <label for="sellerName">Nome do Seller:</label>
-        <input type="text" id="sellerName" name="sellerName" />
+        {% if sellers %}
+        <select id="sellerName" name="sellerName">
+            {% for seller in sellers %}
+            <option>{{ seller['name'] }}</option>
+            {% endfor %}
+        </select>
+        {% endif %}
     </div>
     <div>
         <label for="address">Endereço da Loja:</label>
         <input type="text" id="address" name="address" />
     </div>
     <div>
-        <label for="stock">Produtos da Loja:</label>
-        <input type="text" id="stock" name="stock" />
+        <label>Produtos da Loja:</label>
+        {% for product in products %}
+        <input name="stock[{{products.index(product)}}]" type="checkbox" value="{{ product['name'] }}">{{ product['name'] }}</input>
+        {% endfor %}
     </div>
 
     <div class="button">
