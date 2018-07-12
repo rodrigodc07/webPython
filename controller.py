@@ -14,7 +14,7 @@ def status_code_parser(status_code):
     elif status_code == 201:
         return 'Criado com Sucesso'
     elif status_code == 404:
-        return 'Cadastro não encontrado'
+        return 'Cadastro nao encontrado'
     elif status_code == 422:
         return 'Parametro Invalido'
 
