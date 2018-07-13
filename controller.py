@@ -92,7 +92,7 @@ def seller_get():
         dict = request.form
         response = requests.get(url=URL + 'sellers/' + dict['id'])
         if response.status_code == 200:
-            return render_template('display_data.html', data=response.json(), field_parser=field_parser, item='seller')
+            return render_template('display_data.html', data=response.json(), field_parser=field_parser, item='Seller')
         else:
             flash(status_code_parser(response.status_code), 'error')
             return redirect(url_for('seller_get'))
@@ -106,7 +106,7 @@ def product_get():
         dict = request.form
         response = requests.get(url=URL + 'products/' + dict['id'])
         if response.status_code == 200:
-            return render_template('display_data.html', data=response.json(), field_parser=field_parser, item='product')
+            return render_template('display_data.html', data=response.json(), field_parser=field_parser, item='Produto')
         else:
             flash(status_code_parser(response.status_code), 'error')
             return redirect(url_for('product_get'))
@@ -120,7 +120,7 @@ def store_get():
         dict = request.form
         response = requests.get(url=URL + 'stores/' + dict['id'])
         if response.status_code == 200:
-            return render_template('display_data.html', data=response.json(), field_parser=field_parser, item='store')
+            return render_template('display_data.html', data=response.json(), field_parser=field_parser, item='Loja')
         else:
             flash(status_code_parser(response.status_code), 'error')
             return redirect(url_for('store_get'))
