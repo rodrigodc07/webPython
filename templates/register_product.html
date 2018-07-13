@@ -6,6 +6,24 @@ function goBack() {
 }
 </script>
 <form action="/products" method="post">
+    {% if data %}
+    {% for object in data %}
+    <div class="list">
+        {% for key, value in object.iteritems(): %}
+        <div>
+            {% if '__'  not in key %}
+            {{ field_parser(key) }} do Produto:{{ value }}
+            {% endif%}
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <div class="button">
+        <button type="submit">Enviar Cadastro</button>
+        <button type="submit" formaction="/">Voltar</button>
+    </div>
+    {% else %}
     <div>
         <label for="name">Nome do Produto:</label>
         <input type="text" id="name" name="name" required/>
@@ -23,4 +41,5 @@ function goBack() {
         <button type="submit">Enviar Cadastro</button>
         <button type="button" onclick="goBack()">Voltar</button>
     </div>
+    {% endif %}
 </form>

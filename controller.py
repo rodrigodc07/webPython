@@ -19,6 +19,23 @@ def status_code_parser(status_code):
         return 'Parametro Invalido'
 
 
+def field_parser(field):
+    if field == 'name':
+        return 'Nome'
+    elif field == 'info':
+        return 'Informacoes'
+    elif field == 'department':
+        return 'Departamento'
+    elif field == 'sellerName':
+        return 'Nome do Seller'
+    elif field == 'address':
+        return 'Endereco'
+    elif field == 'stock':
+        return 'Produtos Vendidos'
+    elif field == '_id':
+        return 'Identificador'
+
+
 def list_handler(dict,val):
     keys = dict.keys()
     newdict = {val: []}
@@ -75,7 +92,7 @@ def seller_get():
         dict = request.form
         response = requests.get(url=URL + 'sellers/' + dict['id'])
         if (response.status_code == 200):
-            return jsonify(response.json())
+            return render_template('register_seller.html', data=response.json(), field_parser=field_parser)
         else:
             flash(status_code_parser(response.status_code), 'error')
             return redirect(url_for('seller_get'))
@@ -89,7 +106,7 @@ def product_get():
         dict = request.form
         response = requests.get(url=URL + 'products/' + dict['id'])
         if (response.status_code == 200):
-            return jsonify(response.json())
+            return render_template('register_product.html', data=response.json(), field_parser=field_parser)
         else:
             flash(status_code_parser(response.status_code), 'error')
             return redirect(url_for('product_get'))
@@ -103,7 +120,7 @@ def store_get():
         dict = request.form
         response = requests.get(url=URL + 'stores/' + dict['id'])
         if (response.status_code == 200):
-            return jsonify(response.json())
+            return render_template('register_store.html', data=response.json(), field_parser=field_parser)
         else:
             flash(status_code_parser(response.status_code), 'error')
             return redirect(url_for('store_get'))

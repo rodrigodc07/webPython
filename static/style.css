@@ -55,3 +55,7 @@ li {
 li::before {
   content: "* ";
 }
+
+.list{
+    margin: .5em
+}
