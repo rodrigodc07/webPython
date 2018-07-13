@@ -1,5 +1,5 @@
 <!doctype html>
-<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+!<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
 <script>
 function goBack() {
     window.history.back();
@@ -11,7 +11,14 @@ function goBack() {
         {% for key, value in object.iteritems(): %}
         <div>
             {% if '__'  not in key %}
-            {{ field_parser(key) }} do {{ item.title() }} :{{ value }}
+            {{ field_parser(key) }} de {{ item.title()}}:
+            {% if value is sequence and value is not string %}
+            {% for item in value %}
+            {{item}},
+            {% endfor %}
+            {% else %}
+            {{ value }}
+            {% endif%}
             {% endif%}
         </div>
         <br>
