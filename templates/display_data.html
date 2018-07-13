@@ -1,0 +1,24 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+<form action="/" method="get">
+    {% for object in data %}
+    <div class="list">
+        {% for key, value in object.iteritems(): %}
+        <div>
+            {% if '__'  not in key %}
+            {{ field_parser(key) }} do {{ item.title() }} :{{ value }}
+            {% endif%}
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <div class="button">
+        <button type="submit" >Voltar</button>
+    </div>
+</form>
